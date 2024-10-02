@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Songs</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- {% load static %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet"> -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">{{ welcome }}</h1>
+        
+        <!-- Form to select mood -->
+        <form method="get" action="{% url 'get_spotify' %}" class="mb-4">
+            <div class="form-group">
+                <label for="mood">Select Mood:</label>
+                <select name="mood" id="mood" class="form-control">
+                    <option value="love">Love</option>
+                    <option value="miss">Miss</option>
+                    <option value="sad">Sad</option>
+                    <option value="chill">Chill</option>
+                    <option value="cute">Cute</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Show Songs</button>
+        </form>
+        <div class="row">
+            {% for song in songs %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ song.images }}" class="card-img-top" alt="{{ song.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ song.name }}</h5>
+                        <p class="card-text">Artist: <a href="{{ song.artists_url }}" target="_blank">{{ song.artists }}</a></p>
+                        <a href="{{ song.song_url }}" class="btn btn-success" target="_blank">Listen</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
