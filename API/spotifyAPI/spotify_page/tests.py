@@ -1,9 +1,9 @@
 from django.test import TestCase
 from unittest.mock import patch, MagicMock
-from spotify_page.views import get_api_token  # ปรับ path ให้ตรงกับโครงสร้างโปรเจกต์
+from spotify_page.views import get_api_token  
 
 class TestGetApiToken(TestCase):
-    @patch('spotify_page.views.requests.post')  # ใช้ path ที่ถูกต้อง
+    @patch('spotify_page.views.requests.post')  
     def test_get_api_token_failure(self, mock_post):
         mock_response = MagicMock()
         mock_response.status_code = 400
@@ -16,7 +16,7 @@ class TestGetApiToken(TestCase):
         self.assertTrue('Failed to obtain token' in str(context.exception))
     
 
-    @patch('spotify_page.views.requests.post')  # ใช้ path ที่ถูกต้อง
+    @patch('spotify_page.views.requests.post')  
     def test_get_api_token_not_found(self, mock_post):
         mock_response = MagicMock()
         mock_response.status_code = 404
