@@ -128,17 +128,6 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-# # สำหรับการพัฒนา
-# STATICFILES_DIRS = [
-#     BASE_DIR / "static",
-# ]
-
-# # สำหรับการผลิต
-# STATIC_ROOT = BASE_DIR / "staticfiles"
-
-# # เพิ่ม SECRET_KEY และอื่น ๆ ตามปกติ
-# SECRET_KEY = os.urandom(24).hex()  # ตัวอย่างการใช้ SECRET_KEY
-
 
 SPOTIFY_CLIENT_ID = '8c09ff5ad5024c37846bf3afe7001b24'
 SPOTIFY_CLIENT_SECRET = '95da22da6e63499c96b5c43ad39ed3e9'
